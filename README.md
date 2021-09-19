@@ -55,7 +55,7 @@ npm install
 To run the application in development mode, use:
 
 ```
-npm dev
+npm run dev
 ```
 
 To run the application in production mode, use:
