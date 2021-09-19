@@ -1,0 +1,27 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - ${PORT}:${PORT}
+    environment:
+      DB_HOST: mongo
+      DB_NAME: ${DB_NAME}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_PORT: ${DB_PORT}
+    depends_on:
+      - mongo
+
+
+  mongo:
+    image: mongo:4.2.16
+    volumes:
+      - ./database/scripts:/docker-entrypoint-initdb.d:ro
+    environment:
+      DB_HOST: localhost
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      DB_PORT: ${DB_PORT}
+
